@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://dy8yi2gwx7x5y"]
+
+[ext_resource type="Script" path="res://mario.cs" id="1_3v8jx"]
+[ext_resource type="Texture2D" uid="uid://cktj66uw4t74p" path="res://sprites/mario.png" id="1_joe0t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8d0h"]
+atlas = ExtResource("1_joe0t")
+region = Rect2(18, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03nfv"]
+atlas = ExtResource("1_joe0t")
+region = Rect2(36, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofqxq"]
+atlas = ExtResource("1_joe0t")
+region = Rect2(54, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiv80"]
+atlas = ExtResource("1_joe0t")
+region = Rect2(0, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ncuo"]
+atlas = ExtResource("1_joe0t")
+region = Rect2(92, 0, 19, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce1a8"]
+atlas = ExtResource("1_joe0t")
+region = Rect2(72, 0, 18, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6uk53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8d0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03nfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofqxq")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiv80")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ncuo")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce1a8")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms66f"]
+size = Vector2(28, 36)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(302, 252)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_3v8jx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(2.21506, 2.21506)
+sprite_frames = SubResource("SpriteFrames_6uk53")
+animation = &"Walk"
+frame_progress = 0.298725
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_ms66f")
